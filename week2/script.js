@@ -148,26 +148,116 @@ async function promiseAllWithConcurrencyLimit(tasks, limit) {
 // Question: Implement a polyfill for Array.prototype.flat(). Your implementation must handle
 // the depth argument correctly.
 
-const nestedData = [2, [7, [8]]];
+//const nestedData = [2, [7, [8]]];
 
 // /**
 //  * @param {Array} arr
 //  * @param {number} depth
 //  */
-function customFlat(arr, depth = 1) {
-  // Your recursive implementation here
-  let result = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i]) && depth > 0)
-      result.push(...customFlat(arr[i], depth - 1));
-    else {
-      result.push(arr[i]);
-    }
-  }
-  return result;
-}
 
-console.log(customFlat(nestedData, 1));
+//ANSWER
+
+// function customFlat(arr, depth = 1) {
+//   // Your recursive implementation here
+//   let result = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (Array.isArray(arr[i]) && depth > 0)
+//       result.push(...customFlat(arr[i], depth - 1));
+//     else {
+//       result.push(arr[i]);
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(customFlat(nestedData, 1));
 // [3, [7, 8]]
 // console.log(customFlat(nestedData, 2)); // [7, 8]
 // console.log(customFlat(nestedData, Infinity)); // [9, 10, 11, 7, 8, 12]
+
+// Flipkart | Machine Coding Round: Robust Debounce Utility
+// Question: Implement a debounce utility.
+// The interviewer will likely ask for the "Immediate/Leading" flag as a follow-up
+
+//ANSWER
+
+// function debounce(func, wait, immediate = true) {
+//   let timeout;
+//   // TODO: Logic to clear timeout and handle 'this' context
+//   return function (...args) {
+//     let context = this;
+//     const clbck = immediate && !timeout;
+//     clearTimeout(timeout);
+
+//     timeout = setTimeout(() => {
+//       timeout = null;
+//       if (!immediate) func.apply(context, ...args);
+//     }, wait);
+
+//     if (clbck) func.apply(context, ...args);
+//   };
+// }
+
+// // Usage in UI:
+// const onSearch = debounce((e) => console.log("Searching for:", e.target.value), 300);
+// // document.getElementById('search').addEventListener('input', onSearch);
+
+// Zeta | Technical Round: Deep Equality Utility
+// Question: Implement isDeepEqual(obj1, obj2). This is essential in frontend development for optimizing re-renders in components where you only want to update if the data actually changed.
+
+//ANSWER
+// function isDeepEqual(obj1, obj2) {
+//   // 1. Check if same reference
+//   if (obj1 === obj2) return true;
+//   // 2. Check types
+//   if (
+//     typeof obj1 !== "object" ||
+//     typeof obj2 !== "object" ||
+//     obj1 === null ||
+//     obj2 === null
+//   )
+//     return false;
+//   // 3. Recursive key-by-key comparison
+
+//   const key1 = Object.keys(obj1);
+//   const key2 = Object.keys(obj2);
+
+//   if (key1.length !== key2.length) return false;
+//   for (let key of key1) {
+//     if (!key2.includes(key)) return false;
+
+//     if (!isDeepEqual(obj1[key], obj2[key])) return false;
+//   }
+
+//   return true;
+// }
+
+// // --- Test Cases ---
+// const profileA = { name: "Vasanth", roles: ["admin", "mentor"], meta: { id: 1 } };
+// const profileB = { name: "Vasanth", roles: ["admin", "mentor"], meta: { id: 1 } };
+// const profileC = { name: "Vasanth", roles: ["admin"], meta: { id: 1 } };
+
+// console.log("Test 1 (Identical):", isDeepEqual(profileA, profileB)); // Expected: true
+// console.log("Test 2 (Different Roles):", isDeepEqual(profileA, profileC)); // Expected: false
+// console.log("Test 3 (Nested Change):", isDeepEqual(profileA, {...profileB, meta: { id: 2 } })); // Expected: false
+// console.log("Test 4 (Primitive):", isDeepEqual(10, 10)); // Expected: true
+
+// ### **Adobe | Conceptual Round: Spread Operator Pitfall**
+
+// **Question:** What will be logged? How do you fix this using the spread operator while keeping the code readable?
+
+// const state = {
+//   user: { id: 101, details: { city: 'Bangalore' } },
+//   theme: 'dark'
+// };
+
+// const newState = {...state };
+// newState.user.details.city = 'Chennai';
+
+// console.log(state.user.details.city);
+// // Expected output? Why did it change?
+
+//ANSWER
+//Because objects are reference types, they refer to the same memory location. The spread operator creates a
+// shallow copy, not a deep copy, only top level properties are copied. User and details still refer to the
+// same location in memory. Hence change in one effects the other.

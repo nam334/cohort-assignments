@@ -1,4 +1,4 @@
-export const fetchApi = async () => {
-  const data = await fetch("https://jsonplaceholder.typicode.com/users");
+export const fetchApi = async (url) => {
+  const data = await fetch(url);
   return data.json();
 };

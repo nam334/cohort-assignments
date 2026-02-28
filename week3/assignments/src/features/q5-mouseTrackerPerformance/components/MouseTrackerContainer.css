@@ -1,0 +1,15 @@
+.container {
+  height: 500px;
+  width: 500px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-500px, -500px);
+}

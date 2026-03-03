@@ -1,0 +1,43 @@
+.like-btn {
+  padding: 22px 43px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #fff;
+  font-weight: bold;
+  color: #888;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin: 10% 40%;
+  border-radius: 50px;
+  display: flex;
+  gap: 10px;
+}
+
+.hover {
+  border: 2px solid #f00;
+  color: #f00;
+}
+.loading {
+  border: 2px solid #888;
+  color: #888;
+}
+.liked {
+  background-color: #f00;
+  color: white;
+  border: none;
+}
+.spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

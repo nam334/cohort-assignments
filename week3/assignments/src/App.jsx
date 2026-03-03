@@ -4,6 +4,7 @@ import UserContainer from "./features/q3-reusableCustomHook";
 import MultiStepForm from "./features/q4-multiStepForm";
 import MouseTrackerContainer from "./features/q5-mouseTrackerPerformance";
 import MortgageCalculator from "./features/q6-mortgageCalculator";
+import LikeButton from "./features/q7-likeButton";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <MouseTrackerContainer /> */}
       {/* <MultiStepForm /> */}
       {/* <WindowSize /> */}
-      <MortgageCalculator />
+      {/* <MortgageCalculator /> */}
+      <LikeButton />
     </>
   );
 }

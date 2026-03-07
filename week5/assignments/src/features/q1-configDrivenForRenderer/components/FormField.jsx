@@ -1,6 +1,7 @@
 import React from "react";
 import "./FormRenderer.css";
-const FormField = ({ formField }) => {
+const FormField = ({ formField, changeHandler, errors }) => {
+  console.log("errors obj are", errors);
   const { type, label, name, placeholder, defaultValue } = formField;
   const { required, minLength } = formField.validation;
   return (
@@ -14,7 +15,9 @@ const FormField = ({ formField }) => {
           defaultValue={defaultValue}
           required={required}
           minLength={minLength}
+          onChange={(e) => changeHandler(e)}
         />{" "}
+        {errors[name]}
       </div>
     </>
   );

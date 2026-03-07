@@ -1,5 +1,6 @@
 import "./App.css";
 import FormRenderer from "./features/q1-configDrivenForRenderer";
+import TreeView from "./features/q3-treeViewComponent";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <FormRenderer />
+      {/* <FormRenderer /> */}
+      <TreeView />
     </>
   );
 }

@@ -1,6 +1,8 @@
 import "./App.css";
 import FormRenderer from "./features/q1-configDrivenForRenderer";
+import Table from "./features/q2-reusableTableComponent";
 import TreeView from "./features/q3-treeViewComponent";
+import NotificationCenter from "./features/q4-serviceWorker";
 
 function App() {
   return (
@@ -26,7 +28,9 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
       {/* <FormRenderer /> */}
-      <TreeView />
+      {/* <TreeView /> */}
+      {/* <Table /> */}
+      <NotificationCenter />
     </>
   );
 }

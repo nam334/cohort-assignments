@@ -1,37 +1,60 @@
 import "./App.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import FormRenderer from "./features/q1-configDrivenForRenderer";
 import Table from "./features/q2-reusableTableComponent";
 import TreeView from "./features/q3-treeViewComponent";
 import NotificationCenter from "./features/q4-serviceWorker";
 
 function App() {
+  const navigate = useNavigate();
+
+  const features = [
+    {
+      title: "Config Driven Form",
+      description: "Dynamic form renderer based on configuration.",
+      route: "/form",
+    },
+    {
+      title: "Reusable Table",
+      description: "Reusable table component with pagination.",
+      route: "/table",
+    },
+    {
+      title: "Tree View",
+      description: "Recursive tree view component.",
+      route: "/tree",
+    },
+    {
+      title: "Notification Center",
+      description: "Service worker driven notifications.",
+      route: "/notifications",
+    },
+  ];
+
+  const Dashboard = () => (
+    <div className="dashboard">
+      {features.map((feature) => (
+        <div
+          key={feature.title}
+          className="card"
+          onClick={() => navigate(feature.route)}
+        >
+          <h2>{feature.title}</h2>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-      {/* <FormRenderer /> */}
-      {/* <TreeView /> */}
-      {/* <Table /> */}
-      <NotificationCenter />
-    </>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/form" element={<FormRenderer />} />
+      <Route path="/table" element={<Table />} />
+      <Route path="/tree" element={<TreeView />} />
+      <Route path="/notifications" element={<NotificationCenter />} />
+    </Routes>
   );
 }
 
